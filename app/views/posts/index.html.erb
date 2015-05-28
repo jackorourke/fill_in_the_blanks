@@ -1,3 +1,23 @@
-Display all of your posts here
-
+<h1>Day 9 Exercise</h1>
 <!-- Create the rest of your views in the posts folder -->
+
+<table>
+	<tr>
+		<th>Bru Name</th>
+		<th>Title</th>
+		<th>Body</th>
+		<th colspan="3"></th>
+	</tr>
+
+	<% @posts.each do |post| %>
+		<tr>
+			<td><%= post.bru_name %></td>
+			<td><%= link_to post.title, post_path(post) %></td>
+			<td><%= post.body %></td>
+			<td><%= link_to 'Edit', edit_post_path(post) %>
+			<td><%= link_to 'Destroy', post_path(post), method: :delete, data: {confirm: 'Are you positive?'} %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Make a new post', new_post_path %>
